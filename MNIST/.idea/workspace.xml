@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bd16a0cb-fec2-42fc-9f1f-9d401fbd2cb7" name="Default" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1VPaOmGJ11r6uXWbviGT2R3uLUb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$USER_HOME$/Anaconda3/envs/venv/Scripts" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager" selected="Python.test">
+    <configuration name="hiddenLayer2_sigmoid_MSE" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MNIST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/hiddenLayer2_sigmoid_MSE.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="hidden_layer_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MNIST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/hidden_layer_1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="multilayer_perceptron" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MNIST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/multilayer_perceptron.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="nn_layer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MNIST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nn_layer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MNIST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.nn_layer" />
+      <item itemvalue="Python.multilayer_perceptron" />
+      <item itemvalue="Python.hidden_layer_1" />
+      <item itemvalue="Python.hiddenLayer2_sigmoid_MSE" />
+      <item itemvalue="Python.test" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.hiddenLayer2_sigmoid_MSE" />
+        <item itemvalue="Python.multilayer_perceptron" />
+        <item itemvalue="Python.hidden_layer_1" />
+        <item itemvalue="Python.nn_layer" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bd16a0cb-fec2-42fc-9f1f-9d401fbd2cb7" name="Default" comment="" />
+      <created>1573187500736</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573187500736</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1363" height="452" key="DebuggerActiveHint" timestamp="1577417708317">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1363" height="452" key="DebuggerActiveHint/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1577417708317" />
+    <state x="739" y="278" key="FileChooserDialogImpl" timestamp="1577420333256">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="739" y="278" key="FileChooserDialogImpl/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1577420333256" />
+    <state width="847" height="682" key="GridCell.Tab.0.bottom" timestamp="1579761264710">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="847" height="682" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1579761264710" />
+    <state width="847" height="682" key="GridCell.Tab.0.center" timestamp="1579761264710">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="847" height="682" key="GridCell.Tab.0.center/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1579761264710" />
+    <state width="847" height="682" key="GridCell.Tab.0.left" timestamp="1579761264709">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="847" height="682" key="GridCell.Tab.0.left/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1579761264709" />
+    <state width="847" height="682" key="GridCell.Tab.0.right" timestamp="1579761264710">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="847" height="682" key="GridCell.Tab.0.right/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1579761264710" />
+    <state width="1073" height="862" key="GridCell.Tab.1.bottom" timestamp="1577434473177">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1073" height="862" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1577434473177" />
+    <state width="1073" height="862" key="GridCell.Tab.1.center" timestamp="1577434473177">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1073" height="862" key="GridCell.Tab.1.center/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1577434473177" />
+    <state width="1073" height="862" key="GridCell.Tab.1.left" timestamp="1577434473177">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1073" height="862" key="GridCell.Tab.1.left/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1577434473177" />
+    <state width="1073" height="862" key="GridCell.Tab.1.right" timestamp="1577434473177">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1073" height="862" key="GridCell.Tab.1.right/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1577434473177" />
+    <state x="463" y="165" key="SettingsEditor" timestamp="1577162269730">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="463" y="165" key="SettingsEditor/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1577162269730" />
+    <state x="664" y="348" key="com.intellij.ide.util.TipDialog" timestamp="1579751779631">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="664" y="348" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1579751779631" />
+    <state x="737" y="163" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1577416892665">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="737" y="163" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1577416892665" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/multilayer_perceptron.py</url>
+          <line>155</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/multilayer_perceptron.py</url>
+          <line>151</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/multilayer_perceptron.py</url>
+          <line>164</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/multilayer_perceptron.py</url>
+          <line>175</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/multilayer_perceptron.py</url>
+          <line>184</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/multilayer_perceptron.py</url>
+          <line>221</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/multilayer_perceptron.py</url>
+          <line>252</line>
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/hidden_layer_1.py</url>
+          <line>194</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/multilayer_perceptron.py</url>
+          <line>148</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/hiddenLayer2_sigmoid_MSE.py</url>
+          <line>134</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="img" />
+        <watch expression="tmp" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
