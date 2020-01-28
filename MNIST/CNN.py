@@ -41,7 +41,7 @@ def Padding(img, size):
         img.append(img, np.zeros((width + size + size)))
     return img
 
-def ChangeImgToMarix(img):
+def ChangeImgToMatrix(img):
     height, width = img.shape
     matrix = np.array()
     for i in range(height-2):
@@ -59,6 +59,33 @@ def ReLU(img):
         for j in range(width):
             img[i][j] = max(img[i][j], 0)
     return img
+
+def MaxPooling(input, resultmatrix):
+    depth, height, width = input.shape
+    LayerMax = np.zeros(depth, height/2, width/2)
+    for d in range(depth):
+        for h in range(height):
+            if h%2 != 0:
+                continue
+            else:
+                for w in range(width):
+                    if w %2 != 0:
+                        continue
+                    else:
+                        list = [input[d][h][w],input[d][h][w+1], input[d][h+1][w], input[d][h+1][w+1]]
+                        value = max(list)
+                        index = list.index(value)
+                        if index == 0:
+                            resultmatrix[d][h][w] = 1
+                        elif index == 1:
+                            resultmatrix[d][h][w+1] = 1
+                        elif index == 2:
+                            resultmatrix[d][h+1][w] = 1
+                        else:
+                            resultmatrix[d][h+1][w+1] = 1
+
+                        LayerMax[d][h/2][w/2] = value
+    return LayerMax
 
 #파일 읽기
 fp_train_image = open('C:\\Users\\user\\Documents\\2019\\LAB\\MNIST\\training_set\\train-images.idx3-ubyte','rb')
@@ -88,11 +115,13 @@ TrainLabel = np.array(TrainLabel)
 
 for img in range(TrainImgNum):
     img = Padding(img, 1)
-    input = ChangeImgToMarix(img)
+    input = ChangeImgToMatrix(img)
     L1 = np.matmul(input, F1)
     L1 = ReLU(L1)
     L1.T
-    np.reshape(L1, (-1, 28, 28))
+    L1 = np.reshape(L1, (32, 28, 28))
+    MaxPoolingL1ResultMatrix = np.zeros((32, 28, 28))
+    L1Max = MaxPooling(L1, MaxPoolingL1ResultMatrix)
 
 
 
