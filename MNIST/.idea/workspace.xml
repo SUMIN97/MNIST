@@ -28,7 +28,28 @@
     <property name="last_opened_file_path" value="$USER_HOME$/Anaconda3/envs/venv/Scripts" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.CNN">
+    <configuration name="CNN" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MNIST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CNN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="hiddenLayer2_sigmoid_MSE" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MNIST" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -92,27 +113,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="nn_layer" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="MNIST" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nn_layer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="MNIST" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -135,19 +135,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.nn_layer" />
       <item itemvalue="Python.multilayer_perceptron" />
       <item itemvalue="Python.hidden_layer_1" />
       <item itemvalue="Python.hiddenLayer2_sigmoid_MSE" />
       <item itemvalue="Python.test" />
+      <item itemvalue="Python.CNN" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.CNN" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.hiddenLayer2_sigmoid_MSE" />
         <item itemvalue="Python.multilayer_perceptron" />
         <item itemvalue="Python.hidden_layer_1" />
-        <item itemvalue="Python.nn_layer" />
       </list>
     </recent_temporary>
   </component>
@@ -176,6 +176,19 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state width="1363" height="452" key="DebuggerActiveHint" timestamp="1577417708317">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -185,46 +198,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="278" key="FileChooserDialogImpl/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1577420333256" />
-    <state width="847" height="682" key="GridCell.Tab.0.bottom" timestamp="1580191703014">
+    <state width="1073" height="862" key="GridCell.Tab.0.bottom" timestamp="1580452053331">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="847" height="682" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580191703014" />
-    <state width="847" height="682" key="GridCell.Tab.0.center" timestamp="1580191703014">
+    <state width="1073" height="862" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580452053331" />
+    <state width="1073" height="862" key="GridCell.Tab.0.center" timestamp="1580452053331">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="847" height="682" key="GridCell.Tab.0.center/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580191703014" />
-    <state width="847" height="682" key="GridCell.Tab.0.left" timestamp="1580191703014">
+    <state width="1073" height="862" key="GridCell.Tab.0.center/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580452053331" />
+    <state width="1073" height="862" key="GridCell.Tab.0.left" timestamp="1580452053330">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="847" height="682" key="GridCell.Tab.0.left/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580191703014" />
-    <state width="847" height="682" key="GridCell.Tab.0.right" timestamp="1580191703014">
+    <state width="1073" height="862" key="GridCell.Tab.0.left/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580452053330" />
+    <state width="1073" height="862" key="GridCell.Tab.0.right" timestamp="1580452053331">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="847" height="682" key="GridCell.Tab.0.right/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580191703014" />
-    <state width="1073" height="862" key="GridCell.Tab.1.bottom" timestamp="1580190558083">
+    <state width="1073" height="862" key="GridCell.Tab.0.right/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580452053331" />
+    <state width="1073" height="862" key="GridCell.Tab.1.bottom" timestamp="1580452061746">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1073" height="862" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580190558083" />
-    <state width="1073" height="862" key="GridCell.Tab.1.center" timestamp="1580190558083">
+    <state width="1073" height="862" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580452061746" />
+    <state width="1073" height="862" key="GridCell.Tab.1.center" timestamp="1580452061746">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1073" height="862" key="GridCell.Tab.1.center/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580190558083" />
-    <state width="1073" height="862" key="GridCell.Tab.1.left" timestamp="1580190558083">
+    <state width="1073" height="862" key="GridCell.Tab.1.center/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580452061746" />
+    <state width="1073" height="862" key="GridCell.Tab.1.left" timestamp="1580452061746">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1073" height="862" key="GridCell.Tab.1.left/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580190558083" />
-    <state width="1073" height="862" key="GridCell.Tab.1.right" timestamp="1580190558083">
+    <state width="1073" height="862" key="GridCell.Tab.1.left/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580452061746" />
+    <state width="1073" height="862" key="GridCell.Tab.1.right" timestamp="1580452061746">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1073" height="862" key="GridCell.Tab.1.right/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580190558083" />
+    <state width="1073" height="862" key="GridCell.Tab.1.right/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580452061746" />
     <state x="463" y="165" key="SettingsEditor" timestamp="1577162269730">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1577162269730" />
-    <state x="664" y="348" key="com.intellij.ide.util.TipDialog" timestamp="1579751779631">
+    <state x="664" y="348" key="com.intellij.ide.util.TipDialog" timestamp="1580437646475">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="664" y="348" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1579751779631" />
+    <state x="664" y="348" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580437646475" />
     <state x="737" y="163" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1580188613566">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -285,8 +298,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test.py</url>
-          <line>7</line>
-          <option name="timeStamp" value="76" />
+          <line>13</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/CNN.py</url>
+          <line>166</line>
+          <option name="timeStamp" value="92" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
