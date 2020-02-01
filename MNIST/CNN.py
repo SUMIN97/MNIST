@@ -31,7 +31,7 @@ MaxPoolingL1Result = np.zeros((Filter1Count, 28, 28))
 MaxPoolingL2Result = np.zeros((Filter2Count, 14, 14))
 bias = np.ones((10))
 learning_rate = 0.01
-
+WrongCount=0
 plt.switch_backend('agg')
 
 
@@ -61,7 +61,7 @@ def ChangeToConvolutionMatrix(img):
             for j in range (28):
                 array = img[i][j:j+KernelSize]
                 for k in np.arange(1, KernelSize):
-                    array1 = img[i + k][j:j+KernelSize]
+                    array1 = img[i + k][j:j+KernelSize].copy()
                     array = np.concatenate((array, array1))
                 matrix = np.vstack((matrix, array))
         matrix = np.delete(matrix, 0, axis = 0)
@@ -170,9 +170,16 @@ def Softmax(input):
     layer = layer/sum
     return layer
 
-def BackprpagateMaxPooling(input, resultmatrix):
-    depth, height, width = resultmatrix.shape
-    result = resultmatrix
+def BackpropagateMaxPooling(input):
+    if input.shape[0] == Filter1Count:
+        result = MaxPoolingL1Result
+        depth, height, width = MaxPoolingL1Result.shape
+    elif input.shape[0] == Filter2Count:
+        result = MaxPoolingL2Result
+        depth, height, width = MaxPoolingL2Result.shape
+    else:
+        print("Error in BackpropagateMaxPooling")
+
     for d in range(depth):
         for h in range(height):
             for w in range(width):
@@ -204,77 +211,115 @@ while True:
         break
     #unpack
     num = int(label[0])
-    img = list(unpack(len(s) * 'B', s))  # byte를 unsigned char 형식으로
+    img = np.array(unpack(len(s) * 'B', s))  # byte를 unsigned char 형식으로
+    # img = list(unpack(len(s) * 'B', s))  # byte를 unsigned char 형식으로
     if len(img) !=  784:
         continue
+    elif num >9 : continue
     else:
         img = np.reshape(img, (28,28))
         img = img/255.0
-        TrainImg.append(list(img))
+
+        TrainImg.append(img)
         TrainLabel.append(num)
 
+
+
 TrainImg = np.array(TrainImg)
+TrainLabel = np.array(TrainLabel)
 TrainImgNum = len(TrainImg)
 
-for i in range(TrainImgNum):
-    L1 = TrainImg[i]
-    L1Padding = Padding(L1, 1)
-    L1ConvolBefore = ChangeToConvolutionMatrix(L1Padding)
-    L1ConvolAfter = Convolution(L1ConvolBefore)
-    L1ReLu = ReLU(L1ConvolAfter)
-    L1T = L1ReLu.T
-    L1Reshape = np.reshape(L1T, (Filter1Count, 28, 28))
-    MaxPoolingL1Result = np.zeros((Filter1Count, 28, 28))
-    L2 = MaxPooling(L1Reshape)
+epoch = 0
+while epoch <10:
+    for i in tqdm.tqdm(range(TrainImgNum)):
+        L1 = TrainImg[i]
+        L1Padding = Padding(L1, 1)
+        L1ConvolBefore = ChangeToConvolutionMatrix(L1Padding)
+        L1ConvolAfter = Convolution(L1ConvolBefore)
+        L1ReLu = ReLU(L1ConvolAfter)
+        L1T = L1ReLu.T
+        L1Reshape = np.reshape(L1T, (Filter1Count, 28, 28))
+        MaxPoolingL1Result = np.zeros((Filter1Count, 28, 28))
+        L2 = MaxPooling(L1Reshape)
 
-    L2Padding = Padding(L2, 1)
-    L2ConvolBefore = ChangeToConvolutionMatrix(L2Padding)
-    L2ConvolAfter = Convolution(L2ConvolBefore)
-    L2ReLU = ReLU(L2ConvolAfter)
-    L2T = L2ReLU.T
-    L2ReShape = np.reshape(L2T, (Filter2Count, 14, 14))
-    MaxPoolingL2ResultMatrix = np.zeros((Filter2Count, 14, 14))
-    L3 = MaxPooling(L2ReShape)
-    L3Reshape = np.reshape(L3, (1, -1))
-    L3FullConnect = np.matmul(L3Reshape, F3)
-    L3Output = L3FullConnect + bias
-    L3Output  = L3Output - np.max(L3Output)
-    L3Exp = np.exp(L3Output)
-    sum = np.sum(L3Output)
-    P = L3Exp/sum
+        L2Padding = Padding(L2, 1)
+        L2ConvolBefore = ChangeToConvolutionMatrix(L2Padding)
+        L2ConvolAfter = Convolution(L2ConvolBefore)
+        L2ReLU = ReLU(L2ConvolAfter)
+        L2T = L2ReLU.T
+        L2ReShape = np.reshape(L2T, (Filter2Count, 14, 14))
+        MaxPoolingL2ResultMatrix = np.zeros((Filter2Count, 14, 14))
+        L3 = MaxPooling(L2ReShape)
+        L3Reshape = np.reshape(L3, (1, -1))
+        L3FullConnect = np.matmul(L3Reshape, F3)
+        L3Output = L3FullConnect + bias
+        L3Output  = L3Output - np.max(L3Output)
+        L3Exp = np.exp(L3Output)
+        sum = np.sum(L3Output)
+        P = L3Exp/sum
 
-    # Y = Softmax(L3Output)
-    #cross entropy
+        # Y = Softmax(L3Output)
+        #cross entropy
 
-    #Backpropagation
-    target = np.zeros((10))
-    DErrorByL3Output =P - target
-    DErrorByBias = DErrorByL3FullConnect = DErrorByL3Output
-    DErrorByF3 = np.matmul(L3.Reshape.T , DErrorByL3FullConnect)
-    DErrorByL3Reshape = np.matmul(DErrorByL3FullConnect, F3.T)
-    DErrorByL3 = np.reshape(DErrorByL3Reshape, (Filter2Count, 7, 7))
-    DErrorByL2Reshape = BackprpagateMaxPooling(DErrorByL3, MaxPoolingL2ResultMatrix)
+        if ((np.argmax(P)+1) != TrainLabel[i]):
+            WrongCount+=1
+        #Backpropagation
+        target = np.zeros((10))
+        target[TrainLabel[i]] = 1
+        DErrorByL3Output =P - target
+        DErrorByBias = DErrorByL3FullConnect = DErrorByL3Output
+        DErrorByF3 = np.matmul(L3Reshape.T , DErrorByL3FullConnect)
+        DErrorByL3Reshape = np.matmul(DErrorByL3FullConnect, F3.T)
+        DErrorByL3 = np.reshape(DErrorByL3Reshape, (Filter2Count, 7, 7))
+        DErrorByL2Reshape = BackpropagateMaxPooling(DErrorByL3)
+        DErrorByL2Reshape = np.reshape(DErrorByL2Reshape, (Filter2Count, 14*14))
+        DErrorByL2T = DErrorByL2Reshape.T
+        #ReLus는 동일하니까
+        DErrorByL2ConvolAfter = DErrorByL2T
 
-    DErrorByL2T = DErrorByL2Reshape.T
-    #ReLus는 동일하니까
-    DErrorByL2ConvolAfter = DErrorByL2T
+        #F2
+        DErrorByF2 = np.zeros((Filter1Count, KernelSize * KernelSize, Filter2Count))
+        DErrorByL2ConvolBefore = np.zeros((Filter1Count, 14 * 14, KernelSize*KernelSize))
 
-    #F2
-    DErrorByF2 = np.zeros((Filter1Count, KernelSize * KernelSize, Filter2Count))
-    DErrorByL2ConvolBefore = np.zeros((Filter1Count, 14 * 14, KernelSize*KernelSize))
+        for h in range(DErrorByL2ConvolAfter.shape[0]): #14*14
+            for w in range(DErrorByL2ConvolAfter.shape[1]): #Filter2Count
+                for d in range(Filter1Count):
+                    for k in range(KernelSize * KernelSize):
+                        DErrorByL2ConvolBefore[d][h][k] = F2[d][k][w] * DErrorByL2ConvolAfter[h][w]
+                        DErrorByF2[d][k][w] = L2ConvolBefore[d][h][k] * DErrorByL2ConvolAfter[h][w]
 
-    for h in range(DErrorByL2ConvolAfter.shape[0]): #14*14
-        for w in range(DErrorByL2ConvolAfter.shape[1]): #Filter2Count
-            for d in range(Filter1Count):
-                for k in range(KernelSize * KernelSize):
-                    DErrorByL2ConvolBefore[d][h][k] = F2[d][k][w] * DErrorByL2ConvolAfter[h][w]
-                    DErrorByF2[d][k][w] = L2ConvolBefore[d][h][k] * DErrorByL2ConvolAfter[h][w]
+        #Padding & ChangeToConvolutionMatrix Backpropagation
+        DErrorByL2Padding = np.zeros((Filter1Count, 16, 16))
+        depth, height, width = DErrorByL2ConvolBefore.shape
 
-    #Padding & ChangeToConvolutionMatrix Backpropagation
-    DErrorByL2Padding = np.zeros(Filter1Count, 16, 16)
+        for h in range(height):
+            row = int(h / 14)
+            col = h % 14
+            DErrorByL2Padding[:, row:(row+1), col:(col+3)] += DErrorByL2ConvolBefore[:, h:h+1, 0:3].copy()
+            DErrorByL2Padding[:, row+1:row+2, col: col+3] += DErrorByL2ConvolBefore[:, h:h+1, 3:6].copy()
+            DErrorByL2Padding[:, row+2:row+3, col: col + 3] += DErrorByL2ConvolBefore[:, h:h+1, 6:9].copy()
+
+        DErrorByL2 = DErrorByL2Padding[:, 1:15, 1:15].copy()
+        DErrorByL1Reshape = BackpropagateMaxPooling(DErrorByL2)
+        DErrorByL1Reshape = np.reshape(DErrorByL1Reshape, (Filter1Count, 28*28))
+        DErrorByL1T = DErrorByL1Reshape.T
+        #ReLU
+        DErrorByL1ConvolAfter = DErrorByL1T
+
+        #F1
+        DErrorByF1 = np.matmul(L1ConvolBefore.T, DErrorByL1ConvolAfter)
+        DErrorByL1ConvolBefore = np.matmul(DErrorByL1ConvolAfter, F1.T)
 
 
- """   
+        F1 = F1 - learning_rate * DErrorByF1
+        F2 = F2 - learning_rate *DErrorByF2
+        F3 = F3 - learning_rate *DErrorByF3
+
+    print("Wrong count: ", WrongCount, "\n")
+    epoch+=1
+    WrongCount = 0
+
+"""   
     img = Padding(TrainImg[i], 1)
     input = ChangeToConvolutionMatrix(img)
     L1 = Convolution(input, F1)

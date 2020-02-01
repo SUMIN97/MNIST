@@ -3,11 +3,20 @@ import numpy as np
 PaddingNum = 0
 KernelSize = 3
 def Padding(img, size):
-    height, width = img.shape
-    img = np.insert(img, [0, width], [PaddingNum, PaddingNum], axis=1)
-    img = np.insert(img, 0, np.zeros(width+2), axis=0)
-    img = np.insert(img, height+1, np.zeros(width + 2), axis=0)
-    return img
+    if np.array(img.shape).size == 2:
+        height, width = img.shape
+        img = np.insert(img, [0, width], [PaddingNum, PaddingNum], axis=1)
+        img = np.insert(img, 0, np.zeros(width+2), axis=0)
+        img = np.insert(img, height+1, np.zeros(width + 2), axis=0)
+        return img
+    else:
+        depth, height, width = img.shape
+        result = np.zeros((depth, height + size*2, width + size*2))
+        for d in range(depth):
+            for h in range(height):
+                for w in range(width):
+                    result[d][h+1][w+1] = img[d][h][w]
+        return result
 
 def ChangeToConvolutionMatrix(img):
 
@@ -59,9 +68,8 @@ def MaxPooling(input, resultmatrix):
 #             cube[d][h+1][w+1] = img[d][h][w]
 # print(cube)
 
-target = np.array([0.0001])
-target = target * 10
-print(target)
+# target = np.reshape(np.arange(27), (3, 3, 3))
+# print(target)
 # img = np.insert(img, [0, 4], [0, 0], axis=1)
 # # img = np.vstack((img, np.zeros(6)))
 # img = np.insert(img, 0, np.zeros(6), axis=0)
@@ -94,12 +102,38 @@ print(target)
 # print(img1 * img2)
 # print(np.sum(img1 * img2))
 
-img1 = np.arange(12)
+img1 = np.reshape(np.arange(12), (3,4))
 print(img1)
-img2 = img1.reshape(3, 4)
-print(img2)
-img3 = img2.reshape(3, 2, 2)
-print(img3)
+print(img1.T)
+print(img1)
+# # img2 = img1.reshape(3, 4)
+# # print(img2)
+# img3 = img1.reshape(3, 2, 2)
+# print(img3)
+# img1 = img3[:][:][0:1]
+# print(img1)
+
+a = np.ones((3, 3, 3))
+# print(a)
+b = Padding(a, 1)
+# print(b)
+c = b[0:5, 1:4, 1:4]
+print(c)
+
+# d = np.ones((3, 3, 3))
+# d[:, 0:1, 0:3] += a[:, 0:1, 0:3]
+# print(d)
+
+# f = np.reshape(np.arange(27), (3,3,3))
+# print("f", f)
+# new = c[:, 0:1, 0:1] + f[:, 0:1, 0:1]
+# print(new)
+
+a  = [1,2,3]
+b = a
+b[0] = 4
+print(b)
+print(a)
 
 
 
