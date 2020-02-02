@@ -12,10 +12,10 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
 #파일 읽기
-fp_train_image = open('C:\\Users\\user\\Documents\\2019\\LAB\\MNIST\\training_set\\train-images.idx3-ubyte','rb')
-fp_train_label = open('C:\\Users\\user\\Documents\\2019\\LAB\\MNIST\\training_set\\train-labels.idx1-ubyte', 'rb')
-fp_test_image = open('C:\\Users\\user\\Documents\\2019\\LAB\\MNIST\\test_set\\t10k-images.idx3-ubyte','rb')
-fp_test_label = open('C:\\Users\\user\\Documents\\2019\\LAB\\MNIST\\test_set\\t10k-labels.idx1-ubyte','rb')
+fp_train_image = open('C:\\Users\\user\\Documents\\LAB\\MNIST\\training_set\\train-images.idx3-ubyte','rb')
+fp_train_label = open('C:\\Users\\user\\Documents\\LAB\\MNIST\\training_set\\train-labels.idx1-ubyte', 'rb')
+fp_test_image = open('C:\\Users\\user\\Documents\\LAB\\MNIST\\test_set\\t10k-images.idx3-ubyte','rb')
+fp_test_label = open('C:\\Users\\user\\Documents\\LAB\\MNIST\\test_set\\t10k-labels.idx1-ubyte','rb')
 #read mnist and show number
 
 #사용할 변수 초기화

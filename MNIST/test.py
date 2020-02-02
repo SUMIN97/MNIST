@@ -129,14 +129,10 @@ print(c)
 # new = c[:, 0:1, 0:1] + f[:, 0:1, 0:1]
 # print(new)
 
-a  = [1,2,3]
-b = a
-b[0] = 4
-print(b)
+a  = np.array([1,2,3])
+
+if a>1:
+    a=0
 print(a)
-
-
-
-
 
 
