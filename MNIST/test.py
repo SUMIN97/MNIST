@@ -124,10 +124,11 @@ def MaxPooling(input, resultmatrix):
 # d[:, 0:1, 0:3] += a[:, 0:1, 0:3]
 # print(d)
 
-# f = np.reshape(np.arange(27), (3,3,3))
-# print("f", f)
-# new = c[:, 0:1, 0:1] + f[:, 0:1, 0:1]
-# print(new)
+f = np.reshape(np.arange(27), (3,3,3))
+print("f", f)
+new = f[:, 0:3, 0:3]
+print(new)
+print(new.shape)
 
 # a  = np.array([1,2,3])
 #
@@ -136,13 +137,13 @@ def MaxPooling(input, resultmatrix):
 # print(a)
 
 
-L1 = np.arange(8)
-L1 = np.reshape(L1, (2,2,2))
-print(L1)
-
-
-MaxPoolingL1Result = np.zeros((2,2,2))
-Filter1Count = 3
+# L1 = np.arange(8)
+# L1 = np.reshape(L1, (2,2,2))
+# print(L1)
+#
+#
+# MaxPoolingL1Result = np.zeros((2,2,2))
+# Filter1Count = 3
 
 
 def MaxPooling(input):
