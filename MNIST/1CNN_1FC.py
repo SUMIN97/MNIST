@@ -22,10 +22,10 @@ TrainImgNum = 10000
 KernelSize = 3
 Filter1Count = 4
 Filter2Count = 8
-F1 = np.random.randn(KernelSize * KernelSize, Filter1Count)
+F1 = np.random.randn(KernelSize * KernelSize, Filter1Count) / np.sqrt(KernelSize * KernelSize * Filter1Count)
 # F2 = np.random.randn(Filter1Count, KernelSize * KernelSize, Filter2Count) * np.sqrt(
 #     2 / Filter1Count * (KernelSize * KernelSize) * Filter2Count)
-F3 = np.random.randn(14 * 14 * Filter1Count, 10)
+F3 = np.random.randn(14 * 14 * Filter1Count, 10) / np.sqrt(14 * 14 * Filter1Count * 10)
 Input = []
 MaxPoolingL1Result = np.zeros((Filter1Count, 28, 28), dtype=float)
 MaxPoolingL2Result = np.zeros((Filter2Count, 14, 14), dtype=float)
@@ -175,22 +175,15 @@ def Softmax(input):
 
 
 def BackpropagateMaxPooling(input):
-    if input.shape[0] == Filter1Count:
-        result = MaxPoolingL1Result
-        depth, height, width = MaxPoolingL1Result.shape
-    elif input.shape[0] == Filter2Count:
-        result = MaxPoolingL2Result
-        depth, height, width = MaxPoolingL2Result.shape
-    else:
-        print("Error in BackpropagateMaxPooling")
+    result = np.copy(MaxPoolingL1Result)
+    depth, height, width = MaxPoolingL1Result.shape
 
+    half_height = int(height/2)
+    half_width = int(width/2)
     for d in range(depth):
-        for h in range(height):
-            for w in range(width):
-                if result[d][h][w] == 0:
-                    continue
-                else:
-                    result[d][h][w] = result[d][h][w] * input[d][int(h / 2)][int(w / 2)]
+        for h in range(half_height):
+            for w in range(half_width):
+                MaxPoolingL1Result[d][2*h: 2*h+2][2 * w : 2 *w +2] *= input[d][h][w]
     return result
 
 
@@ -258,21 +251,29 @@ TrainImgNum = len(TrainImg)
 TestImgNum = len(TestImg)
 epoch = 0
 while epoch < 10:
+    # for i in tqdm.tqdm(range(20000)):
     for i in tqdm.tqdm(range(TrainImgNum)):
-        L1 = TrainImg[i]
-        L1Padding = Padding(L1, 1)
+        L1 = np.copy(TrainImg[i])
+        height, width = L1.shape
+        L1 = np.insert(L1, [0, width], [PaddingNum, PaddingNum], axis=1)
+        L1 = np.insert(L1, 0, np.zeros(width + 2), axis=0)
+        L1Padding = np.insert(L1, height + 1, np.zeros(width + 2), axis=0)
+
         L1ConvolBefore = ChangeToConvolutionMatrix(L1Padding)
-        L1ConvolAfter = Convolution(L1ConvolBefore)
+        L1ConvolAfter = np.matmul(L1ConvolBefore, F1)
+        # L1ConvolAfter = Convolution(L1ConvolBefore)
         L1ReLu = ReLU(L1ConvolAfter)
         L1T = L1ReLu.T
         L1Reshape = np.reshape(L1T, (Filter1Count, 28, 28))
+
         MaxPoolingL1Result = np.zeros((Filter1Count, 28, 28))
         L2 = MaxPooling(L1Reshape)
 
         L2Reshape = np.reshape(L2, (1, -1))
         L3Input = np.matmul(L2Reshape, F3) + bias
-        L3Input = L3Input - np.max(L3Input)
+        # L3Input = L3Input - np.max(L3Input)
         L3Output = 1 / (1 + np.exp(-L3Input))
+
 
         # Backpropagation
         onehot = np.zeros(10, dtype=float)
@@ -285,10 +286,11 @@ while epoch < 10:
         DErrorByL2Reshape = np.matmul(DErrorByL3Input, F3.T)
         DErrorByL2 = np.reshape(DErrorByL2Reshape, (Filter1Count, 14, 14))
         DErrorByL1Reshape = BackpropagateMaxPooling(DErrorByL2)
-        DErrorByL1Reshape = np.reshape(DErrorByL1Reshape, (Filter1Count, 28 * 28))
-        DErrorByL1T = DErrorByL1Reshape.T
+        DErrorByL1T = np.reshape(DErrorByL1Reshape, (Filter1Count, 28*28))
+        DErrorByL1ReLu = DErrorByL1T.T
+
         # ReLU
-        DErrorByL1ConvolAfter = DErrorByL1T
+        DErrorByL1ConvolAfter = DErrorByL1ReLu
 
         # F1
         DErrorByF1 = np.matmul(L1ConvolBefore.T, DErrorByL1ConvolAfter)

@@ -102,23 +102,23 @@ def MaxPooling(input, resultmatrix):
 # print(img1 * img2)
 # print(np.sum(img1 * img2))
 
-img1 = np.reshape(np.arange(12), (3,4))
-print(img1)
-print(img1.T)
-print(img1)
-# # img2 = img1.reshape(3, 4)
+# img1 = np.reshape(np.arange(12), (3,4))
+# print(img1)
+# print(img1.T)
+# print(img1)
+# # # img2 = img1.reshape(3, 4)
 # # print(img2)
 # img3 = img1.reshape(3, 2, 2)
 # print(img3)
 # img1 = img3[:][:][0:1]
 # print(img1)
 
-a = np.ones((3, 3, 3))
-# print(a)
-b = Padding(a, 1)
-# print(b)
-c = b[0:5, 1:4, 1:4]
-print(c)
+# a = np.ones((3, 3, 3))
+# # print(a)
+# b = Padding(a, 1)
+# # print(b)
+# c = b[0:5, 1:4, 1:4]
+# print(c)
 
 # d = np.ones((3, 3, 3))
 # d[:, 0:1, 0:3] += a[:, 0:1, 0:3]
@@ -129,10 +129,78 @@ print(c)
 # new = c[:, 0:1, 0:1] + f[:, 0:1, 0:1]
 # print(new)
 
-a  = np.array([1,2,3])
+# a  = np.array([1,2,3])
+#
+# if a>1:
+#     a=0
+# print(a)
 
-if a>1:
-    a=0
-print(a)
+
+L1 = np.arange(8)
+L1 = np.reshape(L1, (2,2,2))
+print(L1)
 
 
+MaxPoolingL1Result = np.zeros((2,2,2))
+Filter1Count = 3
+
+
+def MaxPooling(input):
+    depth, height, width = input.shape
+    LayerMax = np.zeros((depth, int(height / 2), int(width / 2)))
+    for d in range(depth):
+        for h in range(height):
+            if h % 2 != 0:
+                continue
+            else:
+                for w in range(width):
+                    if w % 2 != 0:
+                        continue
+                    else:
+                        list = [input[d][h][w], input[d][h][w + 1], input[d][h + 1][w], input[d][h + 1][w + 1]]
+                        value = max(list)
+                        index = list.index(value)
+                        if index == 0:
+                            if depth == Filter1Count:
+                                MaxPoolingL1Result[d][h][w] = 1
+
+
+                        elif index == 1:
+                            if depth == Filter1Count:
+                                MaxPoolingL1Result[d][h][w + 1] = 1
+
+
+                        elif index == 2:
+                            if depth == Filter1Count:
+                                MaxPoolingL1Result[d][h + 1][w] = 1
+
+                        else:
+                            if depth == Filter1Count:
+                                MaxPoolingL1Result[d][h + 1][w + 1] = 1
+
+
+                        LayerMax[d][int(h / 2)][int(w / 2)] = value
+    return LayerMax
+
+L2 = MaxPooling(L1)
+print(L2)
+print(L2.shape)
+
+def BackpropagateMaxPooling(input):
+    result = np.copy(MaxPoolingL1Result)
+    depth, height, width = MaxPoolingL1Result.shape
+
+    half_height = int(height/2)
+    half_width = int(width/2)
+    for d in range(depth):
+        for h in range(half_height):
+            for w in range(half_width):
+                MaxPoolingL1Result[d][2*h: 2*h+2][2 * w : 2 *w +2] *= input[d][h][w]
+    return result
+
+
+MaxPoolingL1Result = np.zeros((2,2,2))
+MaxPoolingL1Result[0][0][0] = 1
+MaxPoolingL1Result[1][1][1] = 1
+MaxPoolingL1Result[0:2][0: 0+2][0 :0+2] *= 10
+print(MaxPoolingL1Result)

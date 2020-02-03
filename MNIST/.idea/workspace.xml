@@ -144,9 +144,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.1CNN_1FC" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.hiddenLayer2_sigmoid_MSE" />
         <item itemvalue="Python.CNN" />
-        <item itemvalue="Python.test" />
         <item itemvalue="Python.multilayer_perceptron" />
       </list>
     </recent_temporary>
@@ -198,38 +198,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="278" key="FileChooserDialogImpl/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1577420333256" />
-    <state width="1085" height="858" key="GridCell.Tab.0.bottom" timestamp="1580632198926">
+    <state width="835" height="831" key="GridCell.Tab.0.bottom" timestamp="1580647088460">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1085" height="858" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580632198926" />
-    <state width="1085" height="858" key="GridCell.Tab.0.center" timestamp="1580632198926">
+    <state width="835" height="831" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580647088460" />
+    <state width="835" height="831" key="GridCell.Tab.0.center" timestamp="1580647088460">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1085" height="858" key="GridCell.Tab.0.center/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580632198926" />
-    <state width="1085" height="858" key="GridCell.Tab.0.left" timestamp="1580632198926">
+    <state width="835" height="831" key="GridCell.Tab.0.center/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580647088460" />
+    <state width="835" height="831" key="GridCell.Tab.0.left" timestamp="1580647088460">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1085" height="858" key="GridCell.Tab.0.left/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580632198926" />
-    <state width="1085" height="858" key="GridCell.Tab.0.right" timestamp="1580632198926">
+    <state width="835" height="831" key="GridCell.Tab.0.left/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580647088460" />
+    <state width="835" height="831" key="GridCell.Tab.0.right" timestamp="1580647088460">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1085" height="858" key="GridCell.Tab.0.right/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580632198926" />
-    <state width="1073" height="862" key="GridCell.Tab.1.bottom" timestamp="1580632163847">
+    <state width="835" height="831" key="GridCell.Tab.0.right/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580647088460" />
+    <state width="1073" height="862" key="GridCell.Tab.1.bottom" timestamp="1580646553020">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1073" height="862" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580632163847" />
-    <state width="1073" height="862" key="GridCell.Tab.1.center" timestamp="1580632163847">
+    <state width="1073" height="862" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580646553020" />
+    <state width="1073" height="862" key="GridCell.Tab.1.center" timestamp="1580646553020">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1073" height="862" key="GridCell.Tab.1.center/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580632163847" />
-    <state width="1073" height="862" key="GridCell.Tab.1.left" timestamp="1580632163847">
+    <state width="1073" height="862" key="GridCell.Tab.1.center/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580646553020" />
+    <state width="1073" height="862" key="GridCell.Tab.1.left" timestamp="1580646553020">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1073" height="862" key="GridCell.Tab.1.left/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580632163847" />
-    <state width="1073" height="862" key="GridCell.Tab.1.right" timestamp="1580632163847">
+    <state width="1073" height="862" key="GridCell.Tab.1.left/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580646553020" />
+    <state width="1073" height="862" key="GridCell.Tab.1.right" timestamp="1580646553020">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1073" height="862" key="GridCell.Tab.1.right/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580632163847" />
+    <state width="1073" height="862" key="GridCell.Tab.1.right/0.0.1920.1040/-1080.-562.1080.1880@0.0.1920.1040" timestamp="1580646553020" />
     <state x="463" y="165" key="SettingsEditor" timestamp="1577162269730">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -318,16 +318,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/1CNN_1FC.py</url>
-          <line>274</line>
-          <option name="timeStamp" value="104" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/1CNN_1FC.py</url>
-          <line>273</line>
-          <option name="timeStamp" value="105" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/1CNN_1FC.py</url>
           <line>269</line>
           <option name="timeStamp" value="110" />
         </line-breakpoint>
@@ -335,6 +325,11 @@
           <url>file://$PROJECT_DIR$/hiddenLayer2_sigmoid_MSE.py</url>
           <line>156</line>
           <option name="timeStamp" value="111" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/1CNN_1FC.py</url>
+          <line>255</line>
+          <option name="timeStamp" value="115" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
