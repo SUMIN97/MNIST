@@ -10,153 +10,6 @@ import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
-def Padding(img, size):
-    if np.array(img.shape).size == 2:
-        height, width = img.shape
-        img = np.insert(img, [0, width], [PaddingNum, PaddingNum], axis=1)
-        img = np.insert(img, 0, np.zeros(width + 2), axis=0)
-        img = np.insert(img, height + 1, np.zeros(width + 2), axis=0)
-        return img
-    else:
-        depth, height, width = img.shape
-        result = np.zeros((depth, height + size * 2, width + size * 2))
-        for d in range(depth):
-            for h in range(height):
-                for w in range(width):
-                    result[d][h + 1][w + 1] = img[d][h][w]
-        return result
-
-
-def ChangeToConvolutionMatrix(img):
-    if np.array(img.shape).size == 2:
-        height, width = img.shape
-        matrix = np.zeros(KernelSize * KernelSize)
-        for i in range(28):
-            for j in range(28):
-                array = img[i][j:j + KernelSize]
-                for k in np.arange(1, KernelSize):
-                    array1 = img[i + k][j:j + KernelSize].copy()
-                    array = np.concatenate((array, array1))
-                matrix = np.vstack((matrix, array))
-        matrix = np.delete(matrix, 0, axis=0)
-        return matrix
-    else:
-        depth, height, width = img.shape
-        cube = np.zeros((depth, 14 * 14, 9))
-
-        for d in range(depth):
-            matrix = np.zeros(KernelSize * KernelSize)
-            for i in range(14):
-                for j in range(14):
-                    array = img[d][i][j:j + KernelSize]
-                    for k in np.arange(1, KernelSize):
-                        array1 = img[d][i + k][j:j + KernelSize]
-                        array = np.concatenate((array, array1))
-                    matrix = np.vstack((matrix, array))
-            matrix = np.delete(matrix, 0, axis=0)
-            cube[d] = matrix
-        return cube
-
-
-def ReLU(img):
-    height, width = img.shape
-    for i in range(height):
-        for j in range(width):
-            img[i][j] = max(img[i][j], 0)
-    return img
-
-
-def MaxPooling(input):
-    depth, height, width = input.shape
-    LayerMax = np.zeros((depth, int(height / 2), int(width / 2)))
-    for d in range(depth):
-        for h in range(height):
-            if h % 2 != 0:
-                continue
-            else:
-                for w in range(width):
-                    if w % 2 != 0:
-                        continue
-                    else:
-                        list = [input[d][h][w], input[d][h][w + 1], input[d][h + 1][w], input[d][h + 1][w + 1]]
-                        value = max(list)
-                        index = list.index(value)
-                        if index == 0:
-                            if depth == Filter1Count:
-                                MaxPoolingL1Result[d][h][w] = 1
-                            elif depth == Filter2Count:
-                                MaxPoolingL2Result[d][h][w] = 1
-                            else:
-                                print("MaxPooling Error!\n")
-                                return -1
-
-                        elif index == 1:
-                            if depth == Filter1Count:
-                                MaxPoolingL1Result[d][h][w + 1] = 1
-                            elif depth == Filter2Count:
-                                MaxPoolingL2Result[d][h][w + 1] = 1
-                            else:
-                                print("MaxPooling Error!\n")
-                                return -1
-
-                        elif index == 2:
-                            if depth == Filter1Count:
-                                MaxPoolingL1Result[d][h + 1][w] = 1
-                            elif depth == Filter2Count:
-                                MaxPoolingL2Result[d][h + 1][w] = 1
-                            else:
-                                print("MaxPooling Error!\n")
-                                return -1
-                        else:
-                            if depth == Filter1Count:
-                                MaxPoolingL1Result[d][h + 1][w + 1] = 1
-                            elif depth == Filter2Count:
-                                MaxPoolingL2Result[d][h + 1][w + 1] = 1
-                            else:
-                                print("MaxPooling Error!\n")
-                                return -1
-
-                        LayerMax[d][int(h / 2)][int(w / 2)] = value
-    return LayerMax
-
-
-def Convolution(img):
-    # F1 일때
-    if np.array(img.shape).size == 2:
-        result = np.matmul(img, F1)
-        return result
-    # # F2 일때
-    # else:
-    #     depth, height, width = img.shape
-    #     Filterdepth, Filterheight, Filterwidth = F2.shape
-    #     result = np.zeros((height, Filterwidth))
-    #     for h in range(height):
-    #         for w in range(Filterwidth):
-    #             sum = 0
-    #             for d in range(depth):
-    #                 array1 = img[d][h]
-    #                 array2 = F2[d].T[w]
-    #                 sum = sum + np.sum(array1 * array2)
-    #             result[h][w] = sum
-    #     return result
-
-
-
-
-def BackpropagateMaxPooling(input):
-    result = np.copy(MaxPoolingL1Result)
-    depth, height, width = MaxPoolingL1Result.shape
-
-    half_height = int(height/2)
-    half_width = int(width/2)
-    for d in range(depth):
-        for h in range(half_height):
-            for w in range(half_width):
-                MaxPoolingL1Result[d][2*h: 2*h+2][2 * w : 2 *w +2] *= input[d][h][w]
-    return result
-
-
-
 # 파일 읽기
 fp_train_image = open('C:\\Users\\user\\Documents\\LAB\\MNIST\\training_set\\train-images.idx3-ubyte', 'rb')
 fp_train_label = open('C:\\Users\\user\\Documents\\LAB\\MNIST\\training_set\\train-labels.idx1-ubyte', 'rb')
@@ -183,8 +36,7 @@ KernelSize = 3
 Filter1Count = 4
 Filter2Count = 8
 F1 = np.random.randn(Filter1Count, KernelSize, KernelSize) / np.sqrt(KernelSize * KernelSize * Filter1Count)
-# F2 = np.random.randn(Filter1Count, KernelSize * KernelSize, Filter2Count) * np.sqrt(
-#     2 / Filter1Count * (KernelSize * KernelSize) * Filter2Count)
+F2 = np.random.randn(Filter2Count, KernelSize, KernelSize) / np.sqrt(KernelSize * KernelSize * Filter2Count)
 F3 = np.random.randn(14 * 14 * Filter1Count, 10) / np.sqrt(14 * 14 * Filter1Count * 10)
 Input = []
 MaxPoolingL1Result = np.zeros((Filter1Count, 28, 28), dtype=float)
@@ -277,9 +129,43 @@ while epoch < 20:
                     L2[d][h][w] = np.max(arr)
                     index = np.argmax(arr)
                     MaxPoolingL1Result[d][2*h +int(index/2)][2*w + index%2] = 1
+#******************************************************************************************************
 
-        L2Reshape = np.reshape(L2, (1, -1))
-        L3Input = np.matmul(L2Reshape, F3) + bias
+        #Padding
+        height, width = L2.shape
+        L2 = np.insert(L1, [0, width], [PaddingNum, PaddingNum], axis=1)
+        L2 = np.insert(L1, 0, np.zeros(width + 2), axis=0)
+        L2Padding = np.insert(L2, height + 1, np.zeros(width + 2), axis=0)
+
+        #Convolution
+        L2ConvolAfter = np.zeros((Filter2Count, 14, 14))
+        for f in range(Filter2Count):
+            for h in range(14):
+                for w in range(14):
+                    arr1 = np.reshape(L2Padding[h:h+3, w:w+3], (1,-1))
+                    arr2 = np.reshape(F2[f:f+1, :, :], (1, -1))
+                    L2ConvolAfter[f][h][w] = np.sum(arr1 * arr2)
+
+        #ReLU
+        for d in range(L2ConvolAfter.shape[0]):
+            for h in range(L2ConvolAfter.shape[1]):
+                for w in range(L2ConvolAfter.shape[2]):
+                    L2ConvolAfter[d][h][w] = np.max(np.array([0, L2ConvolAfter[d][h][w]]))
+
+        #MaxPooling
+        MaxPoolingL2Result = np.zeros((Filter2Count, 14, 14))
+        L3 = np.zeros((Filter2Count, 7, 7))
+
+        for d in range(Filter2Count):
+            for h in range(7):
+                for w in range(7):
+                    arr = np.reshape(L2ConvolAfter[d:d+1, 2*h:2*h+2, 2*w:2*w+2], (1, -1))
+                    L3[d][h][w] = np.max(arr)
+                    index = np.argmax(arr)
+                    MaxPoolingL2Result[d][2*h +int(index/2)][2*w + index%2] = 1
+
+        L3Reshape = np.reshape(L3, (1, -1))
+        L3Input = np.matmul(L3Reshape, F3) + bias
         # L3Input = L3Input - np.max(L3Input)
         L3Output = 1 / (1 + np.exp(-L3Input))
 
@@ -292,8 +178,24 @@ while epoch < 20:
         DErrorByL3Input = L3Output - onehot
         DErrorByBias = DErrorByL3Input
         DErrorByF3 = np.matmul(L2Reshape.T, DErrorByL3Input)
-        DErrorByL2Reshape = np.matmul(DErrorByL3Input, F3.T)
-        DErrorByL2 = np.reshape(DErrorByL2Reshape, (Filter1Count, 14, 14))
+        DErrorByL3Reshape = np.matmul(DErrorByL3Input, F3.T)
+        DErrorByL3 = np.reshape(DErrorByL3Reshape, (Filter2Count, 7, 7))
+
+        DErrorByL2ConvolAfter = MaxPoolingL2Result
+
+        for d in range(Filter2Count):
+            for h in range(7):
+                for w in range(7):
+                    DErrorByL2ConvolAfter[d:d+1, 2*h:2*h+2, 2*w:2*w+2] *= DErrorByL3[d][h][w]
+
+        #Backpropagate Convol
+        DErrorByF2 = np.zeros((Filter2Count, KernelSize, KernelSize))
+        for d in range(Filter2Count):
+            for h in range(KernelSize):
+                for w in range(KernelSize):
+                    DErrorByF2[d][h][w] = np.sum(L1Padding[h:h+14, w:w+14] * DErrorByL2ConvolAfter[d:d+1, :, :])
+
+
 
         DErrorByL1ConvolAfter = MaxPoolingL1Result
 
@@ -359,9 +261,8 @@ while epoch < 20:
         if ((np.argmax(L3Output)) != TestLabel[i]):
             WrongCount+=1
 
-
-    print("\nWrong count: ", WrongCount, "\n")
-    print("Correct Percent:", round((TestImgNum - WrongCount)/TestImgNum * 100, 2), "%\n")
+    print("Wrong count: ", WrongCount, "\n")
+    print("Correct Percent: ", (TestImgNum - WrongCount)/TestImgNum * 100)
     epoch += 1
     WrongCount = 0
 

@@ -124,11 +124,11 @@ def MaxPooling(input, resultmatrix):
 # d[:, 0:1, 0:3] += a[:, 0:1, 0:3]
 # print(d)
 
-f = np.reshape(np.arange(27), (3,3,3))
-print("f", f)
-new = f[:, 0:3, 0:3]
-print(new)
-print(new.shape)
+# f = np.reshape(np.arange(27), (3,3,3))
+# print("f", f)
+# new = f[:, 0:3, 0:3]
+# print(new)
+# print(new.shape)
 
 # a  = np.array([1,2,3])
 #
@@ -183,25 +183,6 @@ def MaxPooling(input):
                         LayerMax[d][int(h / 2)][int(w / 2)] = value
     return LayerMax
 
-L2 = MaxPooling(L1)
-print(L2)
-print(L2.shape)
-
-def BackpropagateMaxPooling(input):
-    result = np.copy(MaxPoolingL1Result)
-    depth, height, width = MaxPoolingL1Result.shape
-
-    half_height = int(height/2)
-    half_width = int(width/2)
-    for d in range(depth):
-        for h in range(half_height):
-            for w in range(half_width):
-                MaxPoolingL1Result[d][2*h: 2*h+2][2 * w : 2 *w +2] *= input[d][h][w]
-    return result
 
 
-MaxPoolingL1Result = np.zeros((2,2,2))
-MaxPoolingL1Result[0][0][0] = 1
-MaxPoolingL1Result[1][1][1] = 1
-MaxPoolingL1Result[0:2][0: 0+2][0 :0+2] *= 10
-print(MaxPoolingL1Result)
+print(round(1/3*100, 2), "%")
